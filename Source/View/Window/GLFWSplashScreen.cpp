@@ -6,6 +6,8 @@
 #include "Graphics3D/Bitmap.h"
 #include "Graphics3D/Texture.h"
 
+#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+
 GLFWwindow* Splash = NULL;
 
 Texture* gTexture = NULL;
@@ -16,6 +18,7 @@ Texture* gTexture = NULL;
 Program* gProgram = NULL;
 GLuint gVAO = 0;
 GLuint gVBO = 0;
+
 
 void LoadSplashTexture() 
 {
@@ -35,12 +38,10 @@ void LoadSplashShaders()
 }
 
 
-// loads a triangle into the VAO global
-void LoadTriangle() 
+// loads a full screen quad into the VAO global
+void LoadFullScreenQuad() 
 {
-    // make and bind the VAO
-    glGenVertexArrays(1, &gVAO);
-    glBindVertexArray(gVAO);
+
     
     // make and bind the VBO
     glGenBuffers(1, &gVBO);
@@ -50,23 +51,22 @@ void LoadTriangle()
     GLfloat vertexData[] = 
 	{
 
-        //  X     Y     Z
-        1.0f,-1.0f, 1.0f,   1.0f, 1.0f,
-         1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
-         1.0f, 1.0f,-1.0f,   0.0f, 0.0f,
-         1.0f,-1.0f, 1.0f,   1.0f, 1.0f,
-         1.0f, 1.0f,-1.0f,   0.0f, 0.0f,
-         1.0f, 1.0f, 1.0f,   0.0f, 1.0f
+       -1.0f,  1.0f,	// v0 - top left corner
+		-1.0f, -1.0f,	// v1 - bottom left corner
+		 1.0f,  1.0f,	// v2 - top right corner
+		 1.0f, -1.0f	// v3 - bottom right corner
     };
+
+	// Create the vertex array object for the full screen quad.
+	
+	glGenVertexArrays(1, &gVAO);
+	glBindVertexArray(gVAO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
-    
-    // connect the xyz to the "vert" attribute of the vertex shader
-    glEnableVertexAttribArray(gProgram->attrib("vert"));
-    glVertexAttribPointer(gProgram->attrib("vert"), 3, GL_FLOAT, GL_FALSE, 0, NULL);
+
 
 	// connect the uv coords to the "vertTexCoord" attribute of the vertex shader
 	glEnableVertexAttribArray(gProgram->attrib("vertTexCoord"));
-	glVertexAttribPointer(gProgram->attrib("vertTexCoord"), 2, GL_FLOAT, GL_TRUE,  5*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+	glVertexAttribPointer(gProgram->attrib("vertTexCoord"), 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -126,7 +126,7 @@ bool GLFWSplashScreen::VInitializeInstance(int _ResolutionX, int _ResolutionY, c
 	}
 
 	LoadSplashShaders();
-	LoadTriangle();
+	LoadFullScreenQuad();
 	LoadSplashTexture();
 
 	return true;
@@ -142,8 +142,8 @@ void GLFWSplashScreen::VOnRender()
 	 // swap the display buffers (displays what was just drawn)
 	// clear everything
     glClearColor(0, 0, 0, 1); // black
-    glClear(GL_COLOR_BUFFER_BIT);
-    
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     // bind the program (the shaders)
 	gProgram->Use();
 
@@ -155,7 +155,7 @@ void GLFWSplashScreen::VOnRender()
     glBindVertexArray(gVAO);
     
     // draw the VAO
-	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 8);
     
     // unbind the VAO
     glBindVertexArray(0);

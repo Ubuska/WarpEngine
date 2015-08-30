@@ -18,6 +18,8 @@
     <Text Include="ReadMe.txt" />
     <Text Include="fragment-shader.txt" />
     <Text Include="vertex-shader.txt" />
+    <Text Include="splash-fragment-shader.txt" />
+    <Text Include="splash-vertex-shader.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
