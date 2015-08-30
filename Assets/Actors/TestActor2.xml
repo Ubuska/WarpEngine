@@ -1,0 +1,14 @@
+<Actor>
+
+	<TransformComponent>
+		<Position x="0" y="0" z="0"/>
+		<Rotation x="0" y="0" z="0"/>
+	</TransformComponent>
+
+	<AudioComponent>
+		<Sound>audio\spacegod7-level2.ogg</Sound>
+		<Loop>1</Loop>
+		<FadeIn>5.0</FadeIn>
+	</AudioComponent>
+
+</Actor>

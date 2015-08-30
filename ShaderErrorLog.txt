@@ -1,0 +1,2 @@
+Compile failure in shader:
+0(7) : error C0000: syntax error, unexpected floating point constant, expecting "::" at token "<float-const>"

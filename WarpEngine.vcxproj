@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6A6BB854-0872-486A-8D76-3B4683AB2EE4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>WarpEngine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;GLM_FORCE_RADIANS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Frameworks\zlib;$(ProjectDir)\;$(ProjectDir)\Frameworks\tinyxml2;$(ProjectDir)\Source\;$(ProjectDir)\Frameworks\glew\include;$(ProjectDir)\Frameworks\FastDelegate;$(ProjectDir)\Frameworks\stb_image;$(ProjectDir)\Frameworks\glm\;$(ProjectDir)\Frameworks\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Libraries\;$(ProjectDir)\Frameworks\;$(ProjectDir)\Frameworks\glew\lib\Release\Win32;$(ProjectDir)\Frameworks\glfw\lib-msvc110;$(ProjectDir)\Frameworks\glm;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlibstat.lib;opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;tinyxml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Frameworks\zlib;$(ProjectDir)\;$(ProjectDir)\Frameworks\tinyxml2;$(ProjectDir)\Source\;$(ProjectDir)\Frameworks\glew\include;$(ProjectDir)\Frameworks\stb_image;$(ProjectDir)\Frameworks\glm\;$(ProjectDir)\Frameworks\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Libraries\;$(ProjectDir)\Frameworks\;$(ProjectDir)\Frameworks\glew\lib\Release\Win32;$(ProjectDir)\Frameworks\glfw\lib-msvc110;$(ProjectDir)\Frameworks\glm;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlibstat.lib;opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;tinyxml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="fragment-shader.txt" />
+    <Text Include="ReadMe.txt" />
+    <Text Include="vertex-shader.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Frameworks\FastDelegate\FastDelegate.h" />
+    <ClInclude Include="Frameworks\FastDelegate\FastDelegateBind.h" />
+    <ClInclude Include="Source\Graphics3D\Material.h" />
+    <ClInclude Include="Source\Actors\RenderComponent.h" />
+    <ClInclude Include="Source\Actors\RenderComponentInterface.h" />
+    <ClInclude Include="Source\Processes\ProcessEngineLoad.h" />
+    <ClInclude Include="Source\View\Window\GLFWSplashScreen.h" />
+    <ClInclude Include="Source\View\Window\GLFWWindow.h" />
+    <ClInclude Include="Source\View\HumanView.h" />
+    <ClInclude Include="Source\Assets\ModelAsset.h" />
+    <ClInclude Include="Source\Graphics3D\ModelInstance.h" />
+    <ClInclude Include="Source\Graphics3D\Renderer\OpenGLRenderer.h" />
+    <ClInclude Include="Source\Graphics3D\Renderer.h" />
+    <ClInclude Include="Source\Graphics3D\Bitmap.h" />
+    <ClInclude Include="Source\Graphics3D\Lights.h" />
+    <ClInclude Include="Source\Actors\Actor.h" />
+    <ClInclude Include="Source\Actors\ActorComponent.h" />
+    <ClInclude Include="Source\Actors\ActorFactory.h" />
+    <ClInclude Include="Source\Actors\AudioComponent.h" />
+    <ClInclude Include="Source\Actors\TransformComponent.h" />
+    <ClInclude Include="Source\Core\Application.h" />
+    <ClInclude Include="Source\Core\BaseGameLogic.h" />
+    <ClInclude Include="Source\Core\Interfaces.h" />
+    <ClInclude Include="Source\Debugging\Logger.h" />
+    <ClInclude Include="Source\Events\EventManager.h" />
+    <ClInclude Include="Source\Events\Events.h" />
+    <ClInclude Include="Source\Events\TestSystem.h" />
+    <ClInclude Include="Source\Graphics3D\Geometry.h" />
+    <ClInclude Include="Source\Graphics3D\Program.h" />
+    <ClInclude Include="Source\Graphics3D\Scene.h" />
+    <ClInclude Include="Source\Graphics3D\SceneNodes.h" />
+    <ClInclude Include="Source\Graphics3D\Shader.h" />
+    <ClInclude Include="Source\Graphics3D\Texture.h" />
+    <ClInclude Include="Source\Processes\Process.h" />
+    <ClInclude Include="Source\Processes\ProcessDelay.h" />
+    <ClInclude Include="Source\Processes\ProcessManager.h" />
+    <ClInclude Include="Source\Processes\ProcessRender.h" />
+    <ClInclude Include="Source\ResourceCache\ResCache.h" />
+    <ClInclude Include="Source\ResourceCache\XmlResource.h" />
+    <ClInclude Include="Source\ResourceCache\ZipFile.h" />
+    <ClInclude Include="Source\Utilities\LoaderOBJ.h" />
+    <ClInclude Include="Source\Utilities\Math.h" />
+    <ClInclude Include="Source\Utilities\String.h" />
+    <ClInclude Include="Source\Utilities\templates.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WarpEngineStd.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Graphics3D\Material.cpp" />
+    <ClCompile Include="Source\Actors\RenderComponent.cpp" />
+    <ClCompile Include="Source\Processes\ProcessEngineLoad.cpp" />
+    <ClCompile Include="Source\View\Window\GLFWSplashScreen.cpp" />
+    <ClCompile Include="Source\View\Window\GLFWWindow.cpp" />
+    <ClCompile Include="Source\View\HumanView.cpp" />
+    <ClCompile Include="Source\Assets\ModelAsset.cpp" />
+    <ClCompile Include="Source\Graphics3D\ModelInstance.cpp" />
+    <ClCompile Include="Source\Graphics3D\Renderer\OpenGLRenderer.cpp" />
+    <ClCompile Include="Source\Graphics3D\Renderer.cpp" />
+    <ClCompile Include="Source\Graphics3D\Bitmap.cpp" />
+    <ClCompile Include="Source\Graphics3D\Lights.cpp" />
+    <ClCompile Include="Source\Actors\Actor.cpp" />
+    <ClCompile Include="Source\Actors\ActorFactory.cpp" />
+    <ClCompile Include="Source\Actors\AudioComponent.cpp" />
+    <ClCompile Include="Source\Actors\TransformComponent.cpp" />
+    <ClCompile Include="Source\Core\Application.cpp" />
+    <ClCompile Include="Source\Core\BaseGameLogic.cpp" />
+    <ClCompile Include="Source\Debugging\Logger.cpp" />
+    <ClCompile Include="Source\Events\EventManager.cpp" />
+    <ClCompile Include="Source\Events\Events.cpp" />
+    <ClCompile Include="Source\Events\TestSystem.cpp" />
+    <ClCompile Include="Source\Graphics3D\Geometry.cpp" />
+    <ClCompile Include="Source\Graphics3D\Program.cpp" />
+    <ClCompile Include="Source\Graphics3D\Scene.cpp" />
+    <ClCompile Include="Source\Graphics3D\SceneNodes.cpp" />
+    <ClCompile Include="Source\Graphics3D\Shader.cpp" />
+    <ClCompile Include="Source\Graphics3D\Texture.cpp" />
+    <ClCompile Include="Source\Processes\Process.cpp" />
+    <ClCompile Include="Source\Processes\ProcessDelay.cpp" />
+    <ClCompile Include="Source\Processes\ProcessManager.cpp" />
+    <ClCompile Include="Source\Processes\ProcessRender.cpp" />
+    <ClCompile Include="Source\ResourceCache\ResCache.cpp" />
+    <ClCompile Include="Source\ResourceCache\XmlResource.cpp" />
+    <ClCompile Include="Source\ResourceCache\ZipFile.cpp" />
+    <ClCompile Include="Source\Utilities\LoaderOBJ.cpp" />
+    <ClCompile Include="Source\Utilities\Math.cpp" />
+    <ClCompile Include="Source\Utilities\String.cpp" />
+    <ClCompile Include="WarpEngine.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

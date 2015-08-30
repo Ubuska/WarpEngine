@@ -1,0 +1,10 @@
+﻿<Window>
+	<Resolution x="640" y="480"/>
+	<FullScreen>0</FullScreen>
+	<Resizeable>0</Resizeable>
+</Window>
+
+<Physics>
+    <PhysicsMaterials>
+        <PlayDough restitution="0.05" friction="0.9"/>
+       
