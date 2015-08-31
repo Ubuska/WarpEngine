@@ -1,5 +1,8 @@
 #include "Scene.h"
 #include "Lights.h"
+#include "GBuffer.h"
+#include "Graphics3D/Renderer/OpenGLRenderer.h"
+GBuffer* m_GBuffer;
 
 Scene::Scene(shared_ptr<IRenderer> _Renderer)
 {
@@ -50,12 +53,21 @@ bool Scene::AddChild(ActorId _Id, shared_ptr<ISceneNode> _Child)
 
 bool Scene::OnRender()
 	{
+		std::shared_ptr<OpenGLRenderer> Renderer = dynamic_pointer_cast<OpenGLRenderer>(m_Renderer);
+		GBuffer* CurrentGBuffer = Renderer->GetGBuffer();
+		int WINDOW_WIDTH = 640;
+		int WINDOW_HEIGHT = 480;
 		if (m_Root && m_Camera)
 		{
 			// The scene root node could be anything, but it 
 			// is usually a SceneNode with the identity matrix (naked Mat4x4 in my case)
+			
+			//m_LightManager->CalculateLighting(this);
+
+			// Geometry Pass Here
+			CurrentGBuffer->BindForWriting();
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			m_Camera->SetViewTransform(this);
-			m_LightManager->CalculateLighting(this);
 
 			if (m_Root->VPreRender(this) == true)
 			{
@@ -63,10 +75,42 @@ bool Scene::OnRender()
 				m_Root->VRenderChildren(this);
 				m_Root->VPostRender(this);
 			}
+			
+			
+			// Light Pass Here
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			CurrentGBuffer->BindForReading();
+			GLsizei HalfWidth = (GLsizei)(WINDOW_WIDTH / 2.0f);
+			GLsizei HalfHeight = (GLsizei)(WINDOW_HEIGHT / 2.0f);
+
+			CurrentGBuffer->SetReadBuffer(GBuffer::GBUFFER_TEXTURE_TYPE_POSITION);
+			glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
+							0, 0, HalfWidth, HalfHeight, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+
+			CurrentGBuffer->SetReadBuffer(GBuffer::GBUFFER_TEXTURE_TYPE_DIFFUSE);
+			glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, 
+							0, HalfHeight, HalfWidth, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+
+			CurrentGBuffer->SetReadBuffer(GBuffer::GBUFFER_TEXTURE_TYPE_NORMAL);
+			glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, 
+							HalfWidth, HalfHeight, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+
+			CurrentGBuffer->SetReadBuffer(GBuffer::GBUFFER_TEXTURE_TYPE_TEXCOORD);
+			glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, 
+                    HalfWidth, 0, WINDOW_WIDTH, HalfHeight, GL_COLOR_BUFFER_BIT, GL_LINEAR); 
+
+
+			// Use lighting pass shaders here.
+			//Asset->Shaders = LoadTestShaders("Content/Shaders/GeometryPass.vert", "Content/Shaders/GeometryPass.frag");
+					
 		}
 		RenderAlphaPass();
 		return true;
 	}
+
+
+
 bool Scene::OnRestore()
 	{
 		if (!m_Root)

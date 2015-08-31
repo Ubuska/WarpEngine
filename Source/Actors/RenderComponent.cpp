@@ -130,7 +130,8 @@ Texture* LoadTestTexture(const char* _TextureFileName)
 
 void MeshRenderComponent::LoadAsset()
 {
-	Asset->Shaders = LoadTestShaders("vertex-shader.txt", "fragment-shader.txt");
+	//Asset->Shaders = LoadTestShaders("vertex-shader.txt", "fragment-shader.txt");
+	Asset->Shaders = LoadTestShaders("Content/Shaders/GeometryPass.vert", "Content/Shaders/GeometryPass.frag");
 	Asset->DrawType = GL_TRIANGLES;
 	Asset->DrawStart = 0;
 	Asset->DrawCount = 6*2*3;
@@ -149,7 +150,7 @@ void MeshRenderComponent::LoadAsset()
 	{
         //  X     Y     Z       U     V
         // bottom
-        -1.0f,-1.0f,-1.0f,   0.0f, 0.0f,
+        -1.0f,-1.0f,-1.0f,   0.0f, 0.0f, 
          1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
         -1.0f,-1.0f, 1.0f,   0.0f, 1.0f,
          1.0f,-1.0f,-1.0f,   1.0f, 0.0f,
@@ -199,12 +200,15 @@ void MeshRenderComponent::LoadAsset()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 
     // connect the xyz to the "vert" attribute of the vertex shader
-    glEnableVertexAttribArray(Asset->Shaders->attrib("vert"));
-    glVertexAttribPointer(Asset->Shaders->attrib("vert"), 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);
+    glEnableVertexAttribArray(Asset->Shaders->attrib("Position"));
+    glVertexAttribPointer(Asset->Shaders->attrib("Position"), 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);
 
     // connect the uv coords to the "vertTexCoord" attribute of the vertex shader
-    glEnableVertexAttribArray(Asset->Shaders->attrib("vertTexCoord"));
-    glVertexAttribPointer(Asset->Shaders->attrib("vertTexCoord"), 2, GL_FLOAT, GL_TRUE,  5*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(Asset->Shaders->attrib("TexCoord"));
+    glVertexAttribPointer(Asset->Shaders->attrib("TexCoord"), 2, GL_FLOAT, GL_TRUE,  5*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+
+	//glEnableVertexAttribArray(Asset->Shaders->attrib("Normal"));
+   // glVertexAttribPointer(Asset->Shaders->attrib("Normal"), 3, GL_FLOAT, GL_FALSE, 5*sizeof(GLfloat), NULL);
 
     // unbind the VAO
     glBindVertexArray(0);
@@ -261,3 +265,16 @@ void MeshRenderComponent::RenderInstance(const ModelInstance* inst, const shared
     glBindTexture(GL_TEXTURE_2D, 0);
     shaders->StopUsing();
 }
+
+/*
+
+	//Projection * View     *    Model
+	glm::mat4 WVP = _pCamera->Matrix() * pTransform->GetTransform();
+   
+	shaders->setUniform("gWVP", WVP);
+
+	shaders->setUniform("gWorld", _pCamera->Projection());
+    shaders->setUniform("gColorMap", 0); //set to 0 because the texture will be bound to GL_TEXTURE0
+
+
+*/

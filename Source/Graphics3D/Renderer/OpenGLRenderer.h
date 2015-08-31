@@ -1,5 +1,8 @@
 #pragma once
 #include "Graphics3D/Renderer.h"
+
+class GBuffer;
+
 class OpenGLRenderer : public IRenderer
 {
 	public:
@@ -13,5 +16,10 @@ class OpenGLRenderer : public IRenderer
 
 		OpenGLRenderer(void);
 		~OpenGLRenderer(void);
+
+		GBuffer* GetGBuffer();
+
+private:
+	GBuffer* m_pGBuffer;
 };
 

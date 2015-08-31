@@ -90,6 +90,7 @@
   <ItemGroup>
     <ClInclude Include="Frameworks\FastDelegate\FastDelegate.h" />
     <ClInclude Include="Frameworks\FastDelegate\FastDelegateBind.h" />
+    <ClInclude Include="Source\Graphics3D\GBuffer.h" />
     <ClInclude Include="Source\Graphics3D\Material.h" />
     <ClInclude Include="Source\Actors\RenderComponent.h" />
     <ClInclude Include="Source\Actors\RenderComponentInterface.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="WarpEngineStd.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Graphics3D\GBuffer.cpp" />
     <ClCompile Include="Source\Graphics3D\Material.cpp" />
     <ClCompile Include="Source\Actors\RenderComponent.cpp" />
     <ClCompile Include="Source\Processes\ProcessEngineLoad.cpp" />
@@ -175,6 +177,10 @@
     <ClCompile Include="Source\Utilities\Math.cpp" />
     <ClCompile Include="Source\Utilities\String.cpp" />
     <ClCompile Include="WarpEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Shaders\GeometryPass.frag" />
+    <None Include="Content\Shaders\GeometryPass.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
