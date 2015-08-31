@@ -1,7 +1,7 @@
 #include "WarpEngineStd.h"
 #include "XmlResource.h"
 #include "ResCache.h"
-#include "Core/Application.h"
+#include "Application.h"
 
 void XMLResourceExtraData::ParseXml(char* pRawBuffer)
 {

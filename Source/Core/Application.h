@@ -3,13 +3,13 @@
 // third-party libraries
 
 
-#include <glm/glm.hpp>
+#include "glm.hpp"
 
 #include "BaseGameLogic.h"
 
-#include "Processes/ProcessManager.h"
-#include "Events/EventManager.h"
-#include "Graphics3D/Renderer.h"
+#include "ProcessManager.h"
+#include "EventManager.h"
+#include "Renderer.h"
 
 typedef std::list< shared_ptr <IWindow> > WindowsList;	
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9124765C-7040-48E4-B87E-A46ECC02B30F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WarpEngine</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3C47D875F09487D61249D9A40B49DDCBDA735CFF</key>
+		<string>https://github.com/Ubuska/WarpEngine.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WarpEngine.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3C47D875F09487D61249D9A40B49DDCBDA735CFF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Ubuska/WarpEngine.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3C47D875F09487D61249D9A40B49DDCBDA735CFF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3C47D875F09487D61249D9A40B49DDCBDA735CFF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WarpEngine</string>
+		</dict>
+	</array>
+</dict>
+</plist>

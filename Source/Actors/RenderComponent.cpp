@@ -1,10 +1,9 @@
 #include "RenderComponent.h"
 
-#include "Events/Events.h"
+#include "Events.h"
 #include "Actor.h"
 #include "TransformComponent.h"
-#include "Utilities/LoaderOBJ.h"
-
+#include "LoaderOBJ.h"
 
 const char* MeshRenderComponent::g_Name = "MeshRenderComponent";
 	GLuint elementbuffer;
@@ -229,7 +228,8 @@ Color BaseRenderComponent::LoadColor(TiXmlElement* pData)
 //---------------------------------------------------------------------------------------------------------------------
 shared_ptr<SceneNode> MeshRenderComponent::VCreateSceneNode(void)
 {
-	m_pSceneNode = shared_ptr<SceneNode>(WE_NEW OpenGLSceneNode(m_pOwner->GetId(), "RenderComponentNode?", WeakBaseRenderComponentPtr(this), RenderPass_Actor, &glm::mat4x4()));
+    mat4x4 Mat = glm::mat4x4();
+	m_pSceneNode = shared_ptr<SceneNode>(WE_NEW OpenGLSceneNode(m_pOwner->GetId(), "RenderComponentNode?", WeakBaseRenderComponentPtr(this), RenderPass_Actor, &Mat));
 	return m_pSceneNode;
 }
 
@@ -273,12 +273,13 @@ Texture* LoadTestTexture(const char* _TextureFileName)
 void MeshRenderComponent::LoadAsset()
 {
 	//Asset->Shaders = LoadTestShaders("vertex-shader.txt", "fragment-shader.txt");
-	Asset->Shaders = LoadTestShaders("Content/Shaders/GeometryPass.vert", "Content/Shaders/GeometryPass.frag");
-	LoaderOBJ::loadOBJ ("Content/Models/Sphere.obj", Asset);
+	Asset->Shaders = LoadTestShaders("/Users/petergubin/Desktop/Desktop Development/WarpEngine/Content/Shaders/GeometryPass.vert", "/Users/petergubin/Desktop/Desktop Development/WarpEngine/Content/Shaders/GeometryPass.frag");
+	bool bModelLoadSuccess = LoaderOBJ::loadOBJ ("/Users/petergubin/Desktop/Desktop Development/WarpEngine/Content/Models/Sphere.obj", Asset);
+    if (bModelLoadSuccess == false) return;
 	Asset->DrawType = GL_TRIANGLES;
 	Asset->DrawStart = 0;
 
-	Asset->DiffuseTexture = LoadTestTexture("wooden-crate.jpg");
+	Asset->DiffuseTexture = LoadTestTexture("/Users/petergubin/Desktop/Desktop Development/WarpEngine/wooden-crate.jpg");
 
 	glGenBuffers(1, &Asset->VBO);
 	glGenVertexArrays(1, &Asset->VAO);

@@ -1,6 +1,6 @@
 #include "LoaderOBJ.h"
-#include <glm\glm.hpp>
-#include "Assets/ModelAsset.h"
+#include "glm.hpp"
+#include "ModelAsset.h"
 LoaderOBJ::LoaderOBJ(void)
 {
 }

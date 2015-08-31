@@ -41,7 +41,8 @@ struct material
 	glm::vec4 diffuse; // Dcm
 	glm::vec4 specular; // Scm
 	float shininess; // Srm
-};
+};
+
 struct light
 {
 	glm::vec4 ambient; // Acli
@@ -58,11 +59,12 @@ struct light
 	float constantAttenuation; // K0
 	float linearAttenuation; // K1
 	float quadraticAttenuation;// K2
-};
+};
+
 
 // Sample 1
-#include <glm/vec3.hpp>// glm::vec3
-#include <glm/geometric.hpp>// glm::cross, glm::normalize
+#include "vec3.hpp"// glm::vec3
+#include "geometric.hpp"// glm::cross, glm::normalize
 
 glm::vec3 computeNormal
 (
@@ -79,11 +81,11 @@ typedef unsigned int GLuint;
 void glUniformMatrix4fv(GLuint, int, int, float*){}
 
 // Sample 2
-#include <glm/vec3.hpp> // glm::vec3
-#include <glm/vec4.hpp> // glm::vec4, glm::ivec4
-#include <glm/mat4x4.hpp> // glm::mat4
-#include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
-#include <glm/gtc/type_ptr.hpp> // glm::value_ptr
+#include "vec3.hpp" // glm::vec3
+#include "vec4.hpp" // glm::vec4, glm::ivec4
+#include "mat4x4.hpp" // glm::mat4
+#include "matrix_transform.hpp" // glm::translate, glm::rotate, glm::scale, glm::perspective
+#include "type_ptr.hpp" // glm::value_ptr
 void func(GLuint LocationMVP, float Translate, glm::vec2 const & Rotate)
 {
 	glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.f);
@@ -96,53 +98,6 @@ void func(GLuint LocationMVP, float Translate, glm::vec2 const & Rotate)
 }
 
 // Sample 3
-#include <glm/vec2.hpp>// glm::vec2
-#include <glm/packing.hpp>// glm::packUnorm2x16
-#include <glm/integer.hpp>// glm::uint
-#include <glm/gtc/type_precision.hpp>// glm::i8vec2, glm::i32vec2
-std::size_t const VertexCount = 4;
-// Float quad geometry
-std::size_t const PositionSizeF32 = VertexCount * sizeof(glm::vec2);
-glm::vec2 const PositionDataF32[VertexCount] =
-{
-	glm::vec2(-1.0f,-1.0f),
-	glm::vec2( 1.0f,-1.0f),
-	glm::vec2( 1.0f, 1.0f),
-	glm::vec2(-1.0f, 1.0f)
-	};
-// Half-float quad geometry
-std::size_t const PositionSizeF16 = VertexCount * sizeof(glm::uint);
-glm::uint const PositionDataF16[VertexCount] =
-{
-	glm::uint(glm::packUnorm2x16(glm::vec2(-1.0f, -1.0f))),
-	glm::uint(glm::packUnorm2x16(glm::vec2( 1.0f, -1.0f))),
-	glm::uint(glm::packUnorm2x16(glm::vec2( 1.0f, 1.0f))),
-	glm::uint(glm::packUnorm2x16(glm::vec2(-1.0f, 1.0f)))
-};
-// 8 bits signed integer quad geometry
-std::size_t const PositionSizeI8 = VertexCount * sizeof(glm::i8vec2);
-glm::i8vec2 const PositionDataI8[VertexCount] =
-{
-	glm::i8vec2(-1,-1),
-	glm::i8vec2( 1,-1),
-	glm::i8vec2( 1, 1),
-	glm::i8vec2(-1, 1)
-};
-// 32 bits signed integer quad geometry
-std::size_t const PositionSizeI32 = VertexCount * sizeof(glm::i32vec2);
-glm::i32vec2 const PositionDataI32[VertexCount] =
-{
-	glm::i32vec2 (-1,-1),
-	glm::i32vec2 ( 1,-1),
-	glm::i32vec2 ( 1, 1),
-	glm::i32vec2 (-1, 1)
-};
-
-struct intersection
-{
-	glm::vec4 position;
-	glm::vec3 normal;
-};
 
 /*
 // Sample 4

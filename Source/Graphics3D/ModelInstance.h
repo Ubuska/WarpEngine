@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Assets/ModelAsset.h"
+#include "ModelAsset.h"
 
 
 class ModelInstance

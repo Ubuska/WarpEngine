@@ -75,7 +75,7 @@ local void gz_reset(state)
         state->have = 0;            /* no output data available */
         state->eof = 0;             /* not at end of file */
         state->how = LOOK;          /* look for gzip header */
-        state->direct = 1;          /* default for empty file */
+        //state->direct = 1;          /* default for empty file */
     }
     state->seek = 0;                /* no seek request pending */
     gz_error(state, Z_OK, NULL);    /* clear error */
@@ -181,7 +181,7 @@ local gzFile gz_open(path, fd, mode)
 
     /* save the current position for rewinding (only if reading) */
     if (state->mode == GZ_READ) {
-        state->start = LSEEK(state->fd, 0, SEEK_CUR);
+        //state->start = LSEEK(state->fd, 0, SEEK_CUR);
         if (state->start == -1) state->start = 0;
     }
 
@@ -265,7 +265,7 @@ int ZEXPORT gzrewind(file)
         return -1;
 
     /* back up and start over */
-    if (LSEEK(state->fd, state->start, SEEK_SET) == -1)
+   // if (LSEEK(state->fd, state->start, SEEK_SET) == -1)
         return -1;
     gz_reset(state);
     return 0;
@@ -306,7 +306,7 @@ z_off64_t ZEXPORT gzseek64(file, offset, whence)
     /* if within raw area while reading, just go there */
     if (state->mode == GZ_READ && state->how == COPY &&
         state->pos + offset >= state->raw) {
-        ret = LSEEK(state->fd, offset - state->have, SEEK_CUR);
+        //ret = LSEEK(state->fd, offset - state->have, SEEK_CUR);
         if (ret == -1)
             return -1;
         state->have = 0;
@@ -401,7 +401,7 @@ z_off64_t ZEXPORT gzoffset64(file)
         return -1;
 
     /* compute and return effective offset in file */
-    offset = LSEEK(state->fd, 0, SEEK_CUR);
+   // offset = LSEEK(state->fd, 0, SEEK_CUR);
     if (offset == -1)
         return -1;
     if (state->mode == GZ_READ)             /* reading */

@@ -1,7 +1,7 @@
 #################
 ## Project Irrelevant Data
 #################
-
+Frameworks/
 
 #################
 ## Eclipse
@@ -219,3 +219,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+*.html
+
+*.html

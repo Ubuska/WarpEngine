@@ -41,5 +41,5 @@ void TestSystem::DestroyActorDelegate(IEventDataPtr _pEventData)
 void TestSystem::NewActorDelegate(IEventDataPtr _pEventData)
 {
 	std::shared_ptr<EventData_New_Actor> pCastEventData = std::static_pointer_cast<EventData_New_Actor>(_pEventData);
-	std::cout <<"[EVENT : EventData_New_Actor] Received by TestSystem. Actor Id: " << std::cout<< pCastEventData->GetActorId() << std::endl;
+	std::cout <<"[EVENT : EventData_New_Actor] Received by TestSystem. Actor Id: " << &std::cout<< pCastEventData->GetActorId() << std::endl;
 }

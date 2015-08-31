@@ -25,7 +25,7 @@ void TrimLeft(std::wstring &s)
 	int len = (int)s.length();
 	while( i <  len )
 	{
-		TCHAR ch = s[i];			
+		/*TCHAR ch = s[i];
 		int white = 
 		#ifdef UNICODE
 				iswspace( ch );
@@ -33,7 +33,7 @@ void TrimLeft(std::wstring &s)
 				isspace( ch );
 		#endif
 		if (!white)
-			break;
+			break;*/
 		++i;
 	}
 
@@ -156,7 +156,7 @@ string ToStr(int num, int base)
 {
     char str[MAX_DIGITS_IN_INT];
     memset(str,0,MAX_DIGITS_IN_INT);
-    _itoa_s(num,str,MAX_DIGITS_IN_INT,base);
+    //_itoa_s(num,str,MAX_DIGITS_IN_INT,base);
     return (string(str));
 }  // end ToStr()
 
@@ -164,7 +164,7 @@ string ToStr(unsigned int num, int base)
 {
     char str[MAX_DIGITS_IN_INT];
     memset(str, 0, MAX_DIGITS_IN_INT);
-    _ultoa_s((unsigned long)num, str, MAX_DIGITS_IN_INT, base);
+    //_ultoa_s((unsigned long)num, str, MAX_DIGITS_IN_INT, base);
     return (string(str));
 }
 
@@ -172,7 +172,7 @@ string ToStr(unsigned long num, int base)
 {
     char str[MAX_DIGITS_IN_INT];
     memset(str,0,MAX_DIGITS_IN_INT);
-    _ultoa_s(num,str,MAX_DIGITS_IN_INT,base);
+    //_ultoa_s(num,str,MAX_DIGITS_IN_INT,base);
     return (string(str));
 }
 
@@ -181,7 +181,7 @@ string ToStr(double num)
 {
     char str[64];  // I'm sure this is overkill
     memset(str,0,64);
-    _sprintf_p(str,64,"%fL",num);
+    //_sprintf_p(str,64,"%fL",num);
     return (string(str));
 }
 

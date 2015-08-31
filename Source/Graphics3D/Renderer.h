@@ -1,5 +1,5 @@
 #pragma once
-#include "Graphics3D/Lights.h"
+#include "Lights.h"
 
 typedef std::list<shared_ptr<IWindow>> WindowsList;
 

@@ -1,19 +1,19 @@
 #include "Application.h"
 
-#include "ResourceCache/ResCache.h"
+#include "ResCache.h"
 
 // Temporary?
-#include "Processes/ProcessRender.h"
-#include "Processes/ProcessDelay.h"
-#include "Processes/ProcessEngineLoad.h"
+#include "ProcessRender.h"
+#include "ProcessDelay.h"
+#include "ProcessEngineLoad.h"
 
-#include "Events/TestSystem.h"
-#include "Events/EventManager.h"
-#include "Graphics3D/Geometry.h"
-#include "Graphics3D/Renderer/OpenGLRenderer.h"
-#include "View/HumanView.h"
-#include "View/Window/GLFWWindow.h"
-#include "View/Window/GLFWSplashScreen.h"
+#include "TestSystem.h"
+#include "EventManager.h"
+#include "Geometry.h"
+#include "OpenGLRenderer.h"
+#include "HumanView.h"
+#include "GLFWWindow.h"
+#include "GLFWSplashScreen.h"
 
 TestSystem* TS = NULL;
 IWindow* m_pSplash = NULL;
@@ -56,7 +56,7 @@ bool Application::VInitializeInstance()
 		//
 		//IResourceFile *zipFile = (m_bIsEditorRunning || m_Options.m_useDevelopmentDirectories) ? 
 			//WE_NEW DevelopmentResourceZipFile(L"Assets.zip", DevelopmentResourceZipFile::Editor) :
-		IResourceFile *ZipFile = WE_NEW ResourceZipFile(L"Assets.zip");
+		IResourceFile *ZipFile = WE_NEW ResourceZipFile(L"/Users/petergubin/Desktop/Desktop Development/WarpEngine/Assets.zip");
 
 		m_ResCache = WE_NEW ResCache(50, ZipFile);
 

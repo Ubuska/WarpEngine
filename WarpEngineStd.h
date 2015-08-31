@@ -21,9 +21,9 @@
 
 // C RunTime Header Files
 #include <stdlib.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <memory>
-#include <tchar.h>
+//#include <tchar.h>
 
 #include <algorithm>
 #include <string>
@@ -31,14 +31,14 @@
 #include <vector>
 #include <queue>
 #include <map>
-#include "Debugging/Logger.h"
+//#include "Debugging/Logger.h"
 
 #define LOG(_LogText) { std::cout << std:: endl << _LogText << std::endl; }
 
-using std::tr1::shared_ptr;
-using std::tr1::weak_ptr;
-using std::tr1::static_pointer_cast;
-using std::tr1::dynamic_pointer_cast;
+using std::shared_ptr;
+using std::weak_ptr;
+using std::static_pointer_cast;
+using std::dynamic_pointer_cast;
 
 class WE_noncopyable 
 {  
@@ -57,7 +57,7 @@ class WE_noncopyable
 #	define WE_NEW new
 #endif
 
-#include <tinyxml.h>
+#include "tinyxml.h"
 
 // fast delegate stuff
 //#include "../3rdParty/FastDelegate/FastDelegate.h"

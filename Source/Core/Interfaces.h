@@ -1,14 +1,14 @@
 #pragma once
 #include "WarpEngineStd.h"
-#include "Graphics3D/Geometry.h"
-#include <glm.hpp>
+#include "Geometry.h"
+#include "glm.hpp"
 using namespace glm;
 
 class Actor;
 class ActorComponent;
 
 typedef unsigned int ActorId;
-typedef unsigned int ComponentId;
+typedef size_t ComponentId;
 
 const ActorId INVALID_ACTOR_ID = 0;
 const ComponentId INVALID_COMPONENT_ID = 0;
@@ -35,14 +35,16 @@ struct SortBy_SharedPtr_Content
 
 class IGameLogic
 {
+    
 public:
+    enum BaseGameState{} GameState;
 	virtual WeakActorPtr VGetActor(const ActorId id)=0;
     virtual StrongActorPtr VCreateActor(const std::string &_ActorResource, TiXmlElement *_Overrides, const mat4x4 *_InitialTransform=NULL, const ActorId _ServersActorId=INVALID_ACTOR_ID)=0;
 	virtual void VDestroyActor(const ActorId _ActorId)=0;
 	virtual bool VLoadGame(const char* _LevelResource)=0;
 	virtual void VSetProxy()=0;				
 	virtual void VOnUpdate(float _Time, float _ElapsedTime)=0;
-	virtual void VChangeState(enum BaseGameState _NewState)=0;
+	virtual void VChangeState(BaseGameState _NewState)=0;
 	virtual void VMoveActor(const ActorId _Id, Mat4x4 const &_Mat)=0;
 	//virtual shared_ptr<IGamePhysics> VGetGamePhysics(void) = 0;
 };

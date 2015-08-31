@@ -18,7 +18,7 @@
 
 #include "Program.h"
 #include <stdexcept>
-#include <glm/gtc/type_ptr.hpp>
+#include "type_ptr.hpp"
 
 #include <iostream>
 

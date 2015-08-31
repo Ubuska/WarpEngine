@@ -2,22 +2,22 @@
 //
 
 #include <stdio.h>
-#include <tchar.h>
+//#include <tchar.h>
 
 #include <iostream>
 
 // third-party libraries
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include "glm.hpp"
+#include "matrix_transform.hpp"
 
 // Engine units
 #include "WarpEngineStd.h"
-#include "Debugging/Logger.h"
+#include "Logger.h"
 //#include "Core/BaseGameLogic.h"
-#include "Core/Application.h"
-#include "Actors/ActorFactory.h"
+#include "Application.h"
+#include "ActorFactory.h"
 
 
 // globals
@@ -34,7 +34,7 @@ int CheckCPUSpeed();
 
 Application* g_pApp = NULL;
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
 	
 	//g_pApp->InitializeInstance();

@@ -2,12 +2,12 @@
 
 #include "WarpEngineStd.h"
 
-#include "ResourceCache/XmlResource.h"
-#include "Debugging/Logger.h"
+#include "XmlResource.h"
+#include "Logger.h"
 
-#include "Core/Interfaces.h"
-#include "Utilities/Templates.h"
-#include <glm.hpp>
+#include "Interfaces.h"
+#include "Templates.h"
+#include "glm.hpp"
 using namespace glm;
 
 class Actor;

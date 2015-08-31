@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Interfaces.h"
+#include "Interfaces.h"
 
 
 class GLFWSplashScreen : public IWindow

@@ -1,8 +1,8 @@
 #pragma once
 #include "WarpEngineStd.h"
 #include "ActorFactory.h"
-#include "Utilities/String.h"
-#include "Graphics3D/SceneNodes.h"
+#include "String.h"
+#include "SceneNodes.h"
 
 class TiXmlElement;
 
@@ -34,6 +34,7 @@ public:
 	{
 		void* rawId = HashedString::hash_name(componentStr);
 		return reinterpret_cast<ComponentId>(rawId);
+        //return NULL;
 	}
 
 private:

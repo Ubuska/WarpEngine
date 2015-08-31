@@ -1,7 +1,7 @@
 #include "GLFWWindow.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "Core/Application.h"
+#include "Application.h"
 
 const float MouseSensitivity = 0.1f;
 double mouseX, mouseY;
@@ -65,7 +65,7 @@ bool GLFWWindow::VInitializeInstance(int _ResolutionX, int _ResolutionY, const c
 	glfwSetScrollCallback(Self, OnScroll);
 
     // initialise GLEW
-    glewExperimental = GL_TRUE; //stops glew crashing on OSX :-/
+    glewExperimental = GL_FALSE; //stops glew crashing on OSX :-/
     if(glewInit() != GLEW_OK)
         throw std::runtime_error("glewInit failed");
 

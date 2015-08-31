@@ -1,5 +1,5 @@
 #include "ActorFactory.h"
-#include "ResourceCache/XmlResource.h"
+#include "XmlResource.h"
 #include "tinyxml.h"
 //#include "Debugging/Logger.h"
 #include "Actor.h"
@@ -8,7 +8,7 @@
 #include "TransformComponent.h"
 #include "AudioComponent.h"
 #include "RenderComponent.h"
-#include "Events/Events.h"
+#include "Events.h"
 
 
 
@@ -42,8 +42,7 @@ StrongActorPtr ActorFactory::CreateActor(const char* _ActorResource, TiXmlElemen
 	}
 
 	// Loop through each child element and load the component
-	for (TiXmlElement* pNode = pRoot->FirstChildElement(); pNode;
-		pNode = pNode->NextSiblingElement())
+	for (TiXmlElement* pNode = pRoot->FirstChildElement(); pNode; pNode = pNode->NextSiblingElement())
 			{
 				StrongActorComponentPtr pComponent(VCreateComponent(pNode));
 				if (pComponent)

@@ -1,13 +1,13 @@
 #pragma once
 
 #define GLM_SWIZZLE
-
+#define GLM_FORCE_RADIANS
 #include <list>
-#include "Utilities/Math.h"
+#include "Math.h"
 #include "glm.hpp"
-#include <glm/gtc/type_ptr.hpp>
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+#include "type_ptr.hpp"
+#include "matrix_transform.hpp"
+#include "matrix_transform.hpp"
 // Vectors
 
 
@@ -187,11 +187,11 @@ public:
 	void BuildRotYawPitchRoll
 		( const float _YawRadians, const float _PitchRadians, const float _RollRadians)
 	{
-		Quaternion QuatAroundX = Quaternion( Vec3(1.0,0.0,0.0), _RollRadians );
-		Quaternion QuatAroundY = Quaternion( Vec3(0.0,1.0,0.0), _YawRadians );
-		Quaternion QuatAroundZ = Quaternion( Vec3(0.0,0.0,1.0), _PitchRadians );
-		glm::quat FinalOrientation = QuatAroundX.Quat * QuatAroundY.Quat * QuatAroundZ.Quat;
-		Quat = FinalOrientation;
+		//Quaternion QuatAroundX = Quaternion( Vec3(1.0,0.0,0.0), _RollRadians );
+		//Quaternion QuatAroundY = Quaternion( Vec3(0.0,1.0,0.0), _YawRadians );
+		//Quaternion QuatAroundZ = Quaternion( Vec3(0.0,0.0,1.0), _PitchRadians );
+		//glm::quat FinalOrientation = QuatAroundX.Quat * QuatAroundY.Quat * QuatAroundZ.Quat;
+		//Quat = FinalOrientation;
 	}
 	void BuildAxisAngle(const Vec3 &_Axis, const float _Radians)
 	{

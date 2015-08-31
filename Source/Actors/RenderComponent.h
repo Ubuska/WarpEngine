@@ -1,7 +1,7 @@
 #pragma once
 #include "RenderComponentInterface.h"
-#include "Graphics3D/Lights.h"
-#include "Graphics3D/ModelInstance.h"
+#include "Lights.h"
+#include "ModelInstance.h"
 //---------------------------------------------------------------------------------------------------------------------
 // RenderComponent base class.  This class does most of the work except actually creating the scene, which is 
 // delegated to the subclass through a factory method:

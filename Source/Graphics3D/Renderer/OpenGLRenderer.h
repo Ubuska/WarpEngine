@@ -1,5 +1,5 @@
 #pragma once
-#include "Graphics3D/Renderer.h"
+#include "Renderer.h"
 
 class GBuffer;
 

@@ -3,15 +3,15 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Graphics3D/Program.h"
-#include "Graphics3D/Bitmap.h"
-#include "Graphics3D/Texture.h"
-#include "Core/Application.h"
-#include "View/HumanView.h"
-#include "Assets/ModelAsset.h"
-#include "Graphics3D/ModelInstance.h"
-#include "Graphics3D/Scene.h"
-#include "Graphics3D/GBuffer.h"
+#include "Program.h"
+#include "Bitmap.h"
+#include "Texture.h"
+#include "Application.h"
+#include "HumanView.h"
+#include "ModelAsset.h"
+#include "ModelInstance.h"
+#include "Scene.h"
+#include "GBuffer.h"
 
 void OpenGLRenderer::VInitialize()
 {
@@ -48,7 +48,7 @@ void OpenGLRenderer::VRender(IGameView* _pGameView)
 	{
 	
 
-    glClearColor(0, 0, 0.05, 1); // black
+    glClearColor(0.4, 0.4, 0.5, 1); // black
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
 	HumanView* Human = (HumanView*) _pGameView;

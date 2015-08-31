@@ -1,9 +1,9 @@
 #pragma once
-#include "Graphics3D/SceneNodes.h"
+#include "SceneNodes.h"
 
 // WE classes
-#include "Graphics3D/Program.h"
-#include "Graphics3D/Texture.h"
+#include "Program.h"
+#include "Texture.h"
 
 
 

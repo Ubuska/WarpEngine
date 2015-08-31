@@ -1,15 +1,16 @@
 #include "HumanView.h"
-#include "Core/Application.h"
-#include "Graphics3D/Scene.h"
+#include "Application.h"
+#include "Scene.h"
 
 HumanView::HumanView(shared_ptr<IRenderer> _Renderer)
 {
 	m_ProcessManager = WE_NEW ProcessManager();
 	if (_Renderer)
 	{
+        mat4x4 Matrix = mat4x4();
 		// Moved to the HumanView class post press
 		m_pScene = shared_ptr<Scene>(WE_NEW Scene(_Renderer));
-		m_pCamera = shared_ptr<CameraNode>(WE_NEW CameraNode(&mat4x4()));
+		m_pCamera = shared_ptr<CameraNode>(WE_NEW CameraNode(&Matrix));
 
 		m_pScene->AddChild(INVALID_ACTOR_ID, m_pCamera);
 		m_pScene->SetCamera(m_pCamera);

@@ -4,9 +4,9 @@
 #include <map>
 #include <cctype>			// for std::tolower
 #include "ResCache.h"
-#include "Utilities/Templates.h"
-#include "Utilities/String.h"
-#include "Core/Application.h"
+#include "Templates.h"
+#include "String.h"
+#include "Application.h"
 
 //
 //  Resource::Resource
@@ -14,7 +14,8 @@
 Resource::Resource(const std::string &name) 
 { 
 	m_name=name;
-	std::transform(m_name.begin(), m_name.end(), m_name.begin(), (int(*)(int)) std::tolower);
+	//std::transform(m_name.begin(), m_name.end(), m_name.begin(), (int(*)(int)) std::tolower);
+    
 }
 
 
@@ -34,7 +35,9 @@ bool ResourceZipFile::VOpen()
 	m_pZipFile = WE_NEW ZipFile;
     if (m_pZipFile)
     {
-		return m_pZipFile->Init(m_resFileName.c_str());
+        char* str = "/Users/petergubin/Desktop/Desktop  Development/WarpEngine/Assets.zip";
+        std::wstring wstr (str, str+strlen(str));
+		return m_pZipFile->Init(wstr);
 	}
 	return false;	
 }
@@ -55,12 +58,11 @@ int ResourceZipFile::VGetRawResourceSize(const Resource &r)
 int ResourceZipFile::VGetRawResource(const Resource &r, char *buffer)
 {
 	int size = 0;
-	optional<int> resourceNum = m_pZipFile->Find(r.m_name.c_str());
-	if (resourceNum.valid())
-	{
-		size = m_pZipFile->GetFileLen(*resourceNum);
-		m_pZipFile->ReadFile(*resourceNum, buffer);
-	}
+	int resourceNum = m_pZipFile->Find(r.m_name.c_str());
+
+		size = m_pZipFile->GetFileLen(resourceNum);
+		m_pZipFile->ReadFile(resourceNum, buffer);
+	
 	return size;	
 }
 

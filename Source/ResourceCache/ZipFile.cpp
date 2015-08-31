@@ -22,7 +22,14 @@
 // --------------------------------------------------------------------------
 // Basic types.
 // --------------------------------------------------------------------------
+#ifdef _WIN32
 typedef unsigned long dword;
+#endif
+#ifdef __APPLE__
+typedef unsigned int dword;
+#endif
+
+
 typedef unsigned short word;
 typedef unsigned char byte;
 
@@ -115,7 +122,15 @@ bool ZipFile::Init(const std::wstring &resFileName)
 {
   End();
 
-  _wfopen_s(&m_pFile, resFileName.c_str(), _T("rb"));
+#ifdef _WIN32
+_wfopen_s(&m_pFile, resFileName.c_str(), _T("rb"));
+#endif
+    #ifdef __APPLE__
+   m_pFile = fopen("/Users/petergubin/Desktop/Desktop Development/WarpEngine/Assets.zip", "rb");
+    
+#endif
+    
+    
   if (!m_pFile)
     return false;
 
@@ -166,10 +181,11 @@ bool ZipFile::Init(const std::wstring &resFileName)
         if (pfh[j] == '/')
           pfh[j] = '\\';
 
-	  char fileName[_MAX_PATH];
+        int MAX_PATH = 80; // TEMPORARY!!!
+	  char fileName[MAX_PATH];
 	  memcpy(fileName, pfh, fh.fnameLen);
 	  fileName[fh.fnameLen]=0;
-	  _strlwr_s(fileName, _MAX_PATH);
+	  //_strlwr_s(fileName, MAX_PATH);
 	  std::string spath = fileName;
 	  m_ZipContentsMap[spath] = i;
 
@@ -193,7 +209,7 @@ int ZipFile::Find(const std::string &path) const
 {
 	std::string lowerCase = path;
 	std::transform(lowerCase.begin(), lowerCase.end(), lowerCase.begin(), (int(*)(int)) std::tolower);
-	ZipContentsMap::const_iterator i = m_ZipContentsMap.find(lowerCase);
+	ZipContentsMap::const_iterator i = m_ZipContentsMap.find(path);
 	if (i==m_ZipContentsMap.end())
 		return -1;
 
@@ -224,7 +240,7 @@ std::string ZipFile::GetFilename(int i)  const
 	std::string fileName = "";
     if (i >=0 && i < m_nEntries)
     {
-	  char pszDest[_MAX_PATH];
+	  char pszDest[10];
       memcpy(pszDest, m_papDir[i]->GetName(), m_papDir[i]->fnameLen);
       pszDest[m_papDir[i]->fnameLen] = '\0';
 	  fileName = pszDest;

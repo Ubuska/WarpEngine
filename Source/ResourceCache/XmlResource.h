@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ResCache.h"
-#include <tinyxml.h>
+#include "tinyxml.h"
 
 class XMLResourceExtraData : public IResourceExtraData
 {

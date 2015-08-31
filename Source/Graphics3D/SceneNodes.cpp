@@ -1,10 +1,12 @@
 #include "SceneNodes.h"
 #include "WarpEngineStd.h"
-#include "Graphics3D/Scene.h"
+#include "Scene.h"
 
-#include "Assets/ModelAsset.h"
-#include "Graphics3D/ModelInstance.h"
-#include "Actors/RenderComponent.h"
+#include "ModelAsset.h"
+#include "ModelInstance.h"
+#include "RenderComponent.h"
+
+
 
 static const float MaxVerticalAngle = 85.0f; //must be less than 90 to avoid gimbal lock
 
@@ -193,24 +195,24 @@ bool SceneNode::VRemoveChild(ActorId _Id)
 // Root Node Implementation
 // -----------------------------------------------------------------------
 
-RootNode::RootNode() : SceneNode(INVALID_ACTOR_ID, "Root", WeakBaseRenderComponentPtr(), RenderPass_0, &mat4x4())
+RootNode::RootNode() : SceneNode(INVALID_ACTOR_ID, "Root", WeakBaseRenderComponentPtr(), RenderPass_0, WE_NEW mat4x4())
 {
 	m_Children.reserve(RenderPass_Last);
 
 	// Static Render Pass Group
-	shared_ptr<SceneNode> StaticGroup(new SceneNode(INVALID_ACTOR_ID, "StaticGroup", WeakBaseRenderComponentPtr(), RenderPass_Static, &mat4x4()));
+	shared_ptr<SceneNode> StaticGroup(new SceneNode(INVALID_ACTOR_ID, "StaticGroup", WeakBaseRenderComponentPtr(), RenderPass_Static, WE_NEW mat4x4()));
 	m_Children.push_back(StaticGroup);
 
 	// Actor Pass Group
-	shared_ptr<SceneNode> ActorGroup(new SceneNode(INVALID_ACTOR_ID, "ActorGroup", WeakBaseRenderComponentPtr(), RenderPass_Actor, &mat4x4()));
+	shared_ptr<SceneNode> ActorGroup(new SceneNode(INVALID_ACTOR_ID, "ActorGroup", WeakBaseRenderComponentPtr(), RenderPass_Actor, WE_NEW mat4x4()));
 	m_Children.push_back(ActorGroup);
 
 	// Background Objects Render Pass Group
-	shared_ptr<SceneNode> BackgroundGroup(new SceneNode(INVALID_ACTOR_ID, "BackgroundGroup", WeakBaseRenderComponentPtr(), RenderPass_Sky, &mat4x4()));
+	shared_ptr<SceneNode> BackgroundGroup(new SceneNode(INVALID_ACTOR_ID, "BackgroundGroup", WeakBaseRenderComponentPtr(), RenderPass_Sky, WE_NEW mat4x4()));
 	m_Children.push_back(BackgroundGroup);
 
 	// Hidden Objects Render Pass Group
-	shared_ptr<SceneNode> HiddenGroup(new SceneNode(INVALID_ACTOR_ID, "HiddenGroup", WeakBaseRenderComponentPtr(), RenderPass_NotRendered, &mat4x4()));
+	shared_ptr<SceneNode> HiddenGroup(new SceneNode(INVALID_ACTOR_ID, "HiddenGroup", WeakBaseRenderComponentPtr(), RenderPass_NotRendered, WE_NEW mat4x4()));
 	m_Children.push_back(HiddenGroup);
 
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Graphics3D/Texture.h"
+#include "Texture.h"
 
 class Material
 {

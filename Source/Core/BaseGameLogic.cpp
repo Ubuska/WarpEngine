@@ -1,6 +1,6 @@
 #include "BaseGameLogic.h"
 #include "Application.h"
-#include "Events/Events.h"
+#include "Events.h"
 
 BaseGameLogic::BaseGameLogic(void)
 {
@@ -45,7 +45,7 @@ bool BaseGameLogic::Initialize(void)
 
 	for (int i = 0; i < 1; i++)
 	{
-		VCreateActor("actors\\testactor.xml", NULL, &glm::mat4x4(), NULL);
+		VCreateActor("Actors\\TestActor.xml", NULL, WE_NEW glm::mat4x4(), NULL);
 
 	//m_pActorFactory->CreateActor("actors\\testactor.xml", NULL, &glm::mat4x4(), NULL);
 	}

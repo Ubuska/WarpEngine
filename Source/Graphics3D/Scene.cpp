@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include "Lights.h"
 #include "GBuffer.h"
-#include "Graphics3D/Renderer/OpenGLRenderer.h"
+#include "OpenGLRenderer.h"
 GBuffer* m_GBuffer;
 
 Scene::Scene(shared_ptr<IRenderer> _Renderer)

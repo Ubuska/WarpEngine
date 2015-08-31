@@ -1,6 +1,6 @@
 #pragma once
-#include "Core/Interfaces.h"
-#include "View/HumanView.h"
+#include "Interfaces.h"
+#include "HumanView.h"
 
 class GLFWWindow : public IWindow
 {

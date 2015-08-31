@@ -50,7 +50,7 @@
 //========================================================================
 
 
-#include "GameCodeStd.h"
+#include "WarpEngineStd.h"
 #include "PrimeSearch.h"
 #include <stdlib.h>
 
@@ -122,7 +122,7 @@ int PrimeSearch::prime_array[] =
 
 PrimeSearch::PrimeSearch(int elements)
 {
-	GCC_ASSERT(elements>0 && "Can't do a PrimeSearch if you have 0 elements to search through, buddy-boy");
+	//GCC_ASSERT(elements>0 && "Can't do a PrimeSearch if you have 0 elements to search through, buddy-boy");
 
 	maxElements = elements;
 
@@ -140,7 +140,7 @@ PrimeSearch::PrimeSearch(int elements)
 
 	// if this GCC_ASSERT gets hit you didn't have enough prime numbers to deal with this number of 
 	// elements. Go back to the web site.
-	GCC_ASSERT(prime_array[s-1]>maxElements);
+	//GCC_ASSERT(prime_array[s-1]>maxElements);
 
 	while (*currentPrime < maxElements)
 	{

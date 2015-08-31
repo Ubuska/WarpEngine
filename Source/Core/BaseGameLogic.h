@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Core/Interfaces.h"
-#include "Actors/Actor.h"
-#include "Processes/ProcessManager.h"
-#include <glm.hpp>
+#include "Interfaces.h"
+#include "Actor.h"
+#include "ProcessManager.h"
+#include "glm.hpp"
 class ActorFactory;
 
 enum BaseGameState

@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Interfaces.h"
+#include "Interfaces.h"
 
 #include <ostream>
 #include <memory>

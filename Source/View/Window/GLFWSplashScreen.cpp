@@ -2,9 +2,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Graphics3D/Program.h"
-#include "Graphics3D/Bitmap.h"
-#include "Graphics3D/Texture.h"
+#include "Program.h"
+#include "Bitmap.h"
+#include "Texture.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -22,7 +22,7 @@ GLuint gVBO = 0;
 
 void LoadSplashTexture() 
 {
-    Bitmap bmp = Bitmap::bitmapFromFile("WarpEngineSplash.png");
+    Bitmap bmp = Bitmap::bitmapFromFile("/Users/petergubin/Desktop/Desktop\ Development/WarpEngine/WarpEngineSplash.png");
     bmp.flipVertically();
     gTexture = new Texture(bmp);
 }
@@ -32,8 +32,8 @@ void LoadSplashTexture()
 void LoadSplashShaders() 
 {
     std::vector<Shader> shaders;
-	shaders.push_back(Shader::ShaderFromFile("splash-vertex-shader.txt", GL_VERTEX_SHADER));
-	shaders.push_back(Shader::ShaderFromFile("splash-fragment-shader.txt", GL_FRAGMENT_SHADER));
+	shaders.push_back(Shader::ShaderFromFile("/Users/petergubin/Desktop/Desktop\ Development/WarpEngine/splash-vertex-shader.txt", GL_VERTEX_SHADER));
+	shaders.push_back(Shader::ShaderFromFile("/Users/petergubin/Desktop/Desktop\ Development/WarpEngine/splash-fragment-shader.txt", GL_FRAGMENT_SHADER));
     gProgram = new Program(shaders);
 }
 

@@ -1,7 +1,7 @@
 #pragma once
-#include "Processes/ProcessManager.h"
-#include "Core/Interfaces.h"
-#include "Graphics3D/Renderer.h"
+#include "ProcessManager.h"
+#include "Interfaces.h"
+#include "Renderer.h"
 
 class HumanView : public IGameView
 {

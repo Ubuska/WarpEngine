@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Interfaces.h"
+#include "Interfaces.h"
 
 //#include "Material.h"
 //#include "Shaders.h"

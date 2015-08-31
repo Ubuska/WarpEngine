@@ -1,6 +1,6 @@
 #include "Geometry.h"
 #include "SceneNodes.h"
-#include "Events/Events.h"
+#include "Events.h"
 
 class CameraNode;
 class SkyNode;

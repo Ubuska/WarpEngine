@@ -5,7 +5,7 @@
 #include "ActorComponent.h"
 //#include "Graphics3D/Geometry.h"
 #include "glm.hpp"
-#include "Graphics3D/Geometry.h"
+#include "Geometry.h"
 
 //---------------------------------------------------------------------------------------------------------------------
 // This component implementation is a very simple representation of the physical aspect of an actor.  It just defines 
