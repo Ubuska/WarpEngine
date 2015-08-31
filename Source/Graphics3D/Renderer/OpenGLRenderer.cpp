@@ -48,8 +48,8 @@ void OpenGLRenderer::VRender(IGameView* _pGameView)
 	{
 	
 
-   // glClearColor(0, 0, 0.05, 1); // black
-   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0, 0, 0.05, 1); // black
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
 	HumanView* Human = (HumanView*) _pGameView;
 

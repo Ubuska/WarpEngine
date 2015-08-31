@@ -34,7 +34,11 @@ public:
 	std::vector<glm::vec2> Uvs;
 	std::vector<glm::vec3> Normals;
 
-	//std::vector<unsigned short> Indices;
+	std::vector<unsigned short> Indices;
+
+	void SetIndices(std::vector<unsigned short> _Indices);
+	unsigned short GetIndicesSize();
+
 
 };
 

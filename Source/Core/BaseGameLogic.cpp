@@ -50,7 +50,7 @@ bool BaseGameLogic::Initialize(void)
 	//m_pActorFactory->CreateActor("actors\\testactor.xml", NULL, &glm::mat4x4(), NULL);
 	}
 
-	VCreateActor("actors\\testactor.xml", NULL, &T, NULL);
+	//VCreateActor("actors\\testactor.xml", NULL, &T, NULL);
 
 	for (int i = 0; i < 3; i++)
 	{

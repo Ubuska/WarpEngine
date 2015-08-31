@@ -17,6 +17,14 @@ ModelAsset::ModelAsset(void)
 	SpecularColor =  glm::vec3(1.0f, 1.0f, 1.0f);
 }
 
+void ModelAsset::SetIndices(std::vector<unsigned short> _Indices)
+{
+	Indices = _Indices;
+}
+unsigned short ModelAsset::GetIndicesSize()
+{
+	return Indices.size();
+}
 
 ModelAsset::~ModelAsset(void)
 {

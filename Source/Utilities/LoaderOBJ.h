@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "Assets/ModelAsset.h"
+class ModelAsset;
 
 
 class LoaderOBJ
