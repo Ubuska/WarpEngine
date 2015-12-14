@@ -97,6 +97,7 @@
     <ClInclude Include="Source\Graphics3D\Material.h" />
     <ClInclude Include="Source\Actors\RenderComponent.h" />
     <ClInclude Include="Source\Actors\RenderComponentInterface.h" />
+    <ClInclude Include="Source\Graphics3D\RenderCommand.h" />
     <ClInclude Include="Source\Processes\ProcessEngineLoad.h" />
     <ClInclude Include="Source\View\Window\GLFWSplashScreen.h" />
     <ClInclude Include="Source\View\Window\GLFWWindow.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Source\Graphics3D\GBuffer.cpp" />
     <ClCompile Include="Source\Graphics3D\Material.cpp" />
     <ClCompile Include="Source\Actors\RenderComponent.cpp" />
+    <ClCompile Include="Source\Graphics3D\RenderCommand.cpp" />
     <ClCompile Include="Source\Processes\ProcessEngineLoad.cpp" />
     <ClCompile Include="Source\View\Window\GLFWSplashScreen.cpp" />
     <ClCompile Include="Source\View\Window\GLFWWindow.cpp" />
