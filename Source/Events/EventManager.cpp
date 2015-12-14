@@ -195,7 +195,7 @@ bool EventManager::VUpdate(unsigned long _MaxMillis)
 	bool bQueueFlushed = false;
 	if (m_Queues[QueueToProcess].size() > 0)
 	{
-		bQueueFlushed = (m_Queues[QueueToProcess].back());
+		bQueueFlushed = false;//(m_Queues[QueueToProcess].back());
 		if (!bQueueFlushed)
 		{
 			while (!m_Queues[QueueToProcess].empty())

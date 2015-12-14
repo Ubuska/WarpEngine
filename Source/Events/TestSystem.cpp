@@ -35,11 +35,11 @@ void TestSystem::Initialize(void)
 void TestSystem::DestroyActorDelegate(IEventDataPtr _pEventData)
 {
 	std::shared_ptr<EventData_Destroy_Actor> pCastEventData = std::static_pointer_cast<EventData_Destroy_Actor>(_pEventData);
-	std::cout <<"Event Fired!!!" << std::endl;
+	//std::cout <<"Event Fired!!!" << std::endl;
 }
 
 void TestSystem::NewActorDelegate(IEventDataPtr _pEventData)
 {
 	std::shared_ptr<EventData_New_Actor> pCastEventData = std::static_pointer_cast<EventData_New_Actor>(_pEventData);
-	std::cout <<"[EVENT : EventData_New_Actor] Received by TestSystem. Actor Id: " << std::cout<< pCastEventData->GetActorId() << std::endl;
+	//std::cout <<"[EVENT : EventData_New_Actor] Received by TestSystem. Actor Id: " << std::cout<< pCastEventData->GetActorId() << std::endl;
 }

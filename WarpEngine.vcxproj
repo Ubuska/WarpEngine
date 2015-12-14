@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -56,9 +56,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)\Libraries\;$(ProjectDir)\Frameworks\;$(ProjectDir)\Frameworks\glew\lib\Release\Win32;$(ProjectDir)\Frameworks\glfw\lib-msvc110;$(ProjectDir)\Frameworks\glm;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Frameworks\zlib;$(ProjectDir)\Libraries\;$(ProjectDir)\Frameworks\;$(ProjectDir)\Frameworks\glew\lib\Release\Win32;$(ProjectDir)\Frameworks\glfw\lib-msvc110;$(ProjectDir)\Frameworks\glm;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zlibstat.lib;opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;tinyxml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
